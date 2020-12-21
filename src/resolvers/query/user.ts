@@ -1,6 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 
-const query: IResolvers = {
+const resolverQueryUsers: IResolvers = {
     Query: {
         hello(): string {
             return 'Hello world!!';
@@ -14,4 +14,4 @@ const query: IResolvers = {
     }
 };
 
-export default query;
+export default resolverQueryUsers;
