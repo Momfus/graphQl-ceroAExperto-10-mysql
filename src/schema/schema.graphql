@@ -1,4 +1,6 @@
 type Query {
+    "Lista de desarrolladores"
+    users: [User!]!
     hello: String!
     helloWithName(name: String!): String!
     helloToGraphQLCourse: String!
@@ -7,4 +9,20 @@ type Query {
 
 type Mutation {
     add(value: String!): [String]
+}
+
+
+type User {
+
+    "Identificador del usuario"
+    id: ID!
+    "Nombre y apellidos del usuario"
+    name: String!
+    "Si es instructor"
+    instructor: Boolean!
+    "Identificador del usuario de twitter (sin la url principal)"
+    twitter: String
+    "Página web personal o repositorio de Github"
+    web: String
+
 }
