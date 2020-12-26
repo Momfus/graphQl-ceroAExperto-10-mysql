@@ -17,3 +17,6 @@ export const UPDATE_LANGUAGE = 'UPDATE `languages` SET `name` = ? WHERE `languag
 
 export const DELETE_USER = 'DELETE FROM `users` WHERE `users`.`id` = ?';
 export const DELETE_USER_IN_USER_LANGUAGES = 'DELETE FROM `user-languages` WHERE `user-languages`.`user` = ?';
+
+export const DELETE_LANGUAGE = 'DELETE FROM `languages` WHERE `languages`.`id` = ?';
+export const DELETE_LANGUAGE_IN_USER_LANGUAGES = 'DELETE FROM `user-languages` WHERE `user-languages`.`language` = ?';

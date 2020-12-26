@@ -1,5 +1,10 @@
 import { IResolvers } from 'graphql-tools';
-import { ADD_LANGUAGE, UPDATE_LANGUAGE } from '../../constants/db-operations';
+import {
+  ADD_LANGUAGE,
+  UPDATE_LANGUAGE,
+  DELETE_LANGUAGE_IN_USER_LANGUAGES,
+  DELETE_LANGUAGE,
+} from '../../constants/db-operations';
 
 const resolverMutationLanguage: IResolvers = {
   Mutation: {
@@ -14,7 +19,9 @@ const resolverMutationLanguage: IResolvers = {
             } // Resultado incorrecto
 
             // Resultado correcto
-            resolve(`Añadido correctamente el lenguaje de programación con el ID ${results.insertId}`);
+            resolve(
+              `Añadido correctamente el lenguaje de programación con el ID ${results.insertId}`
+            );
           }
         );
       });
@@ -30,7 +37,33 @@ const resolverMutationLanguage: IResolvers = {
             } // Resultado incorrecto
 
             // Resultado correcto
-            resolve(`Modificado correctamente el lenguaje de programación con el ID ${id}`);
+            resolve(
+              `Modificado correctamente el lenguaje de programación con el ID ${id}`
+            );
+          }
+        );
+      });
+    },
+    deleteLanguage(_, { id }, { connection }) {
+      return new Promise((resolve, reject) => {
+        connection.query(
+          DELETE_LANGUAGE_IN_USER_LANGUAGES,
+          [id],
+          function (error: any, results: any) {
+            if (error) {
+              reject(error);
+            }
+            connection.query(
+              DELETE_LANGUAGE,
+              [id],
+              function (error: any, __: any) {
+                if (error) {
+                  reject(error);
+                }
+                // Resultado correcto
+                resolve(`Eliminado correctamente el lenguaje de programación con el ID ${id}`);
+              }
+            );
           }
         );
       });
