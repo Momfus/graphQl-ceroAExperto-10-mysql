@@ -3,6 +3,7 @@ import { USER_LANGUAGES_LIST } from '../../constants/db-operations';
 
 const resolverTypesUsers: IResolvers = {
   User: {
+    twitter: (parent) => `https://twitter.com/${parent.twitter}`,
     languages(parent, __, { connection }) {
       // console.log(parent);
       const languages = new Array(0);
