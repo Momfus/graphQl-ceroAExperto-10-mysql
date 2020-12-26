@@ -4,6 +4,7 @@ import { USER_LANGUAGES_LIST } from '../../constants/db-operations';
 const resolverTypesUsers: IResolvers = {
   User: {
     languages(parent, __, { connection }) {
+      // console.log(parent);
       const languages = new Array(0);
       const sql = USER_LANGUAGES_LIST;
 
