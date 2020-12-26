@@ -10,5 +10,5 @@ type Query {
 }
 
 type Mutation {
-    add(value: String!): [String]
+    addUser(user: UserInput): String
 }

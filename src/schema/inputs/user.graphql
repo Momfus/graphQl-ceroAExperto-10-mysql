@@ -1,6 +1,5 @@
-type User {
-  "Identificador del usuario"
-  id: ID!
+input UserInput {
+   id: ID
   "Nombre y apellidos del usuario"
   name: String!
   "Si es instructor"
@@ -9,6 +8,4 @@ type User {
   twitter: String
   "Página web personal o repositorio de Github"
   web: String
-  "Lenguajes de programación en los que trabajo"
-  languages: [Language!]!
 }
