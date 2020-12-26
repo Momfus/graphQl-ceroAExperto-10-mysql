@@ -14,3 +14,6 @@ export const ADD_LANGUAGE = 'INSERT INTO `languages` (`id`, `name`) VALUES (NULL
 
 export const UPDATE_USER = 'UPDATE `users` SET `name` = ?, `instructor` = ?, `twitter` = ?, `web` = ? WHERE `users`.`id` = ?';
 export const UPDATE_LANGUAGE = 'UPDATE `languages` SET `name` = ? WHERE `languages`.`id` = ?';
+
+export const DELETE_USER = 'DELETE FROM `users` WHERE `users`.`id` = ?';
+export const DELETE_USER_IN_USER_LANGUAGES = 'DELETE FROM `user-languages` WHERE `user-languages`.`user` = ?';

@@ -1,5 +1,10 @@
 import { IResolvers } from 'graphql-tools';
-import { ADD_USER, UPDATE_USER } from '../../constants/db-operations';
+import {
+  ADD_USER,
+  UPDATE_USER,
+  DELETE_USER_IN_USER_LANGUAGES,
+  DELETE_USER,
+} from '../../constants/db-operations';
 
 const resolverMutationUsers: IResolvers = {
   Mutation: {
@@ -14,7 +19,9 @@ const resolverMutationUsers: IResolvers = {
             } // Resultado incorrecto
 
             // Resultado correcto
-            resolve(`Añadido correctamente el usuario con el ID ${results.insertId}`);
+            resolve(
+              `Añadido correctamente el usuario con el ID ${results.insertId}`
+            );
           }
         );
       });
@@ -31,6 +38,26 @@ const resolverMutationUsers: IResolvers = {
 
             // Resultado correcto
             resolve(`Modificado correctamente el usuario con el ID ${user.id}`);
+          }
+        );
+      });
+    },
+    deleteUser(_, { id }, { connection }) {
+      return new Promise((resolve, reject) => {
+        connection.query(
+          DELETE_USER_IN_USER_LANGUAGES,
+          [id],
+          function (error: any, results: any) {
+            if (error) {
+              reject(error);
+            }
+            connection.query(DELETE_USER, [id], function (error: any, __: any) {
+              if (error) {
+                reject(error);
+              }
+              // Resultado correcto
+              resolve(`Eliminado correctamente el usuario con el ID ${id}`);
+            });
           }
         );
       });
