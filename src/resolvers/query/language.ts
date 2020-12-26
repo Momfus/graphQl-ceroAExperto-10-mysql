@@ -1,14 +1,14 @@
 import { IResolvers } from 'graphql-tools';
-import { USER_LIST, USER_SELECT_DETAILS } from '../../constants/db-operations';
+import { LANGUAGES_LIST, LANGUAGES_SELECT_DETAILS } from '../../constants/db-operations';
 
-const resolverQueryUsers: IResolvers = {
+const resolverQueryLanguages: IResolvers = {
   Query: {
-    users(_, __, { connection }) {
+    languages(_, __, { connection }) {
       // Devuelvo una lista de usuarios
 
-      const users = new Array(0);
+      const languages  = new Array(0);
 
-      const sql = USER_LIST;
+      const sql = LANGUAGES_LIST;
       return new Promise((resolve, reject) => {
         connection.query(sql, function (error: any, results: any) {
           if (error) {
@@ -17,22 +17,20 @@ const resolverQueryUsers: IResolvers = {
 
           // Resultado correcto
           results.forEach((element: any) => {
-            users.push({
+            languages.push({
               id: element.id,
-              name: element.name,
-              instructor: element.instructor,
-              twitter: element.twitter,
-              web: element.web,
+              name: element.name
             });
           });
-          resolve(users);
+          resolve(languages);
         });
       });
     },
-    user(_, { id }, { connection }) {
+    
+    language(_, { id }, { connection }) {
       // Devuelvo un usuario por id
 
-      const sql = USER_SELECT_DETAILS;
+      const sql = LANGUAGES_SELECT_DETAILS;
       return new Promise((resolve, reject) => {
         connection.query(sql, [id], function (error: any, results: any) {
           if (error) {
@@ -41,34 +39,22 @@ const resolverQueryUsers: IResolvers = {
 
           // Resultado correcto
           const element = results[0];
-          let user;
+          let language;
 
           if (element === undefined || element === null) {
-            user = null;
+            language = null;
           }else {
-            user = {
+            language = {
               id: element.id,
               name: element.name,
-              instructor: element.instructor,
-              twitter: element.twitter,
-              web: element.web,
             };
           }
-          resolve( user);
+          resolve( language);
 
         });
       });
     },
-    hello(): string {
-      return 'Hello world!!';
-    },
-    helloWithName(_: void, args): string {
-      return `Hello ${args.name}!!`;
-    },
-    helloToGraphQLCourse(): string {
-      return 'Hello to GraphQL Course!!';
-    },
   },
 };
 
-export default resolverQueryUsers;
+export default resolverQueryLanguages;
