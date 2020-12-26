@@ -10,3 +10,4 @@ export const USER_LANGUAGES_LIST = 'SELECT UL.user, UL.language, L.name FROM `us
 export const LANGUAGES_USER_LIST = 'SELECT UL.user, UL.language, U.name, U.web, U.instructor, U.twitter FROM `user-languages` AS UL INNER JOIN `users` AS U ON UL.user= U.id WHERE language = ?';
 
 export const ADD_USER = 'INSERT INTO `users` (`id`, `name`, `instructor`, `twitter`, `web`) VALUES (NULL, ?, ?, ?, ?)';
+export const ADD_LANGUAGE = 'INSERT INTO `languages` (`id`, `name`) VALUES (NULL, ?)';

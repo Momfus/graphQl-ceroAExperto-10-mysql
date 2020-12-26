@@ -10,5 +10,6 @@ type Query {
 }
 
 type Mutation {
-    addUser(user: UserInput): String
+    addUser(user: UserInput!): String
+    addLanguage(name: String!): String
 }
