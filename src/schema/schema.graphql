@@ -1,6 +1,8 @@
 type Query {
     "Lista de desarrolladores"
     users: [User!]!
+    "Desarrollador seleccionado mediante ID (puede ser nula la respuesta)"
+    user(id: ID!): User
     hello: String!
     helloWithName(name: String!): String!
     helloToGraphQLCourse: String!
