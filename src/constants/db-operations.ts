@@ -13,3 +13,4 @@ export const ADD_USER = 'INSERT INTO `users` (`id`, `name`, `instructor`, `twitt
 export const ADD_LANGUAGE = 'INSERT INTO `languages` (`id`, `name`) VALUES (NULL, ?)';
 
 export const UPDATE_USER = 'UPDATE `users` SET `name` = ?, `instructor` = ?, `twitter` = ?, `web` = ? WHERE `users`.`id` = ?';
+export const UPDATE_LANGUAGE = 'UPDATE `languages` SET `name` = ? WHERE `languages`.`id` = ?';

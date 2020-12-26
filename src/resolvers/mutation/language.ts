@@ -1,5 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { ADD_LANGUAGE } from '../../constants/db-operations';
+import { ADD_LANGUAGE, UPDATE_LANGUAGE } from '../../constants/db-operations';
 
 const resolverMutationLanguage: IResolvers = {
   Mutation: {
@@ -15,6 +15,22 @@ const resolverMutationLanguage: IResolvers = {
 
             // Resultado correcto
             resolve(`Añadido correctamente el lenguaje de programación con el ID ${results.insertId}`);
+          }
+        );
+      });
+    },
+    updateLanguage(_, { id, name }, { connection }) {
+      return new Promise((resolve, reject) => {
+        connection.query(
+          UPDATE_LANGUAGE,
+          [name, id],
+          function (error: any, __: any) {
+            if (error) {
+              reject(error);
+            } // Resultado incorrecto
+
+            // Resultado correcto
+            resolve(`Modificado correctamente el lenguaje de programación con el ID ${id}`);
           }
         );
       });
