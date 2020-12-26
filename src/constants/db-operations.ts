@@ -11,3 +11,5 @@ export const LANGUAGES_USER_LIST = 'SELECT UL.user, UL.language, U.name, U.web, 
 
 export const ADD_USER = 'INSERT INTO `users` (`id`, `name`, `instructor`, `twitter`, `web`) VALUES (NULL, ?, ?, ?, ?)';
 export const ADD_LANGUAGE = 'INSERT INTO `languages` (`id`, `name`) VALUES (NULL, ?)';
+
+export const UPDATE_USER = 'UPDATE `users` SET `name` = ?, `instructor` = ?, `twitter` = ?, `web` = ? WHERE `users`.`id` = ?';
