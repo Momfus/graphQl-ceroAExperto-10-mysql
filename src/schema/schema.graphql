@@ -7,11 +7,6 @@ type Query {
     languages: [Language!]!
     "Lenguajes seleccionado mediante ID (puede ser nula la respuesta)"
     language(id: ID!): Language
-
-    hello: String!
-    helloWithName(name: String!): String!
-    helloToGraphQLCourse: String!
-    list: [String]
 }
 
 type Mutation {

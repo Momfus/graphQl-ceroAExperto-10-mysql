@@ -10,5 +10,6 @@ type User {
     twitter: String
     "Página web personal o repositorio de Github"
     web: String
-
+    "Lenguajes de programación en los que trabajo"
+    languages: [Language!]!
 }

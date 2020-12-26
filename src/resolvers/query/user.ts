@@ -31,7 +31,6 @@ const resolverQueryUsers: IResolvers = {
     },
     user(_, { id }, { connection }) {
       // Devuelvo un usuario por id
-
       const sql = USER_SELECT_DETAILS;
       return new Promise((resolve, reject) => {
         connection.query(sql, [id], function (error: any, results: any) {
@@ -58,16 +57,7 @@ const resolverQueryUsers: IResolvers = {
 
         });
       });
-    },
-    hello(): string {
-      return 'Hello world!!';
-    },
-    helloWithName(_: void, args): string {
-      return `Hello ${args.name}!!`;
-    },
-    helloToGraphQLCourse(): string {
-      return 'Hello to GraphQL Course!!';
-    },
+    }
   },
 };
 

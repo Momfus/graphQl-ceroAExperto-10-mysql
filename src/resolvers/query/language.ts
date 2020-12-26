@@ -28,8 +28,8 @@ const resolverQueryLanguages: IResolvers = {
     },
     
     language(_, { id }, { connection }) {
-      // Devuelvo un usuario por id
-
+      
+      // Devuelvo un lenguage por id
       const sql = LANGUAGES_SELECT_DETAILS;
       return new Promise((resolve, reject) => {
         connection.query(sql, [id], function (error: any, results: any) {
